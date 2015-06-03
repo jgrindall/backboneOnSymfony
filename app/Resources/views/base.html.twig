@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="/bbapi//web/assets/css/test.css">
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}
+        {% endblock %}
+        {% block javascripts %}
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone.js"></script>
+            <script src="/bbapi/web/assets/src/model/Product.js"></script>
+            <script src="/bbapi/web/assets/src/model/ProductList.js"></script>
+            <script src="/bbapi/web/assets/src/view/ProductView.js"></script>
+            <script src="/bbapi/web/assets/src/view/ProductListView.js"></script>
+            <script src="/bbapi/web/assets/src/test.js"></script>
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,33 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+index:
+    resource: "@AppBundle/Controller/DefaultController.php"
+    type:     annotation
+
+list_products:
+    path:     /products/
+    defaults: { _controller: AppBundle\Controller\DefaultController::showModelsAction }
+    methods:  [GET]
+
+list_product:
+    path:     /products/{id}
+    defaults: { _controller: AppBundle\Controller\DefaultController::showModelAction }
+    methods:  [GET]
+
+add_products:
+    path:     /products/
+    defaults: { _controller: AppBundle\Controller\DefaultController::addModelAction }
+    methods:  [POST]
+
+update_products:
+    path:     /products/{id}
+    defaults: { _controller: AppBundle\Controller\DefaultController::updateModelAction }
+    methods:  [PUT]
+
+remove_products:
+    path:     /products/{id}
+    defaults: { _controller: AppBundle\Controller\DefaultController::removeModelAction }
+    methods:  [DELETE]
+
