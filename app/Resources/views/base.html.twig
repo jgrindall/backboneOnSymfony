@@ -7,19 +7,24 @@
         <link rel="stylesheet" type="text/css" href="/bbapi//web/assets/css/test.css">
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block javascripts1 %}
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone.js"></script>
+            <script src="/bbapi/web/assets/lib/dijon-0.5.3.js"></script>
+        {% endblock %}
     </head>
     <body>
         {% block body %}
         {% endblock %}
-        {% block javascripts %}
-            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-            <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore.js"></script>
-            <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone.js"></script>
+        {% block javascripts2 %}
+            <script src="/bbapi/web/assets/src/app.js"></script>
             <script src="/bbapi/web/assets/src/model/Product.js"></script>
             <script src="/bbapi/web/assets/src/model/ProductList.js"></script>
             <script src="/bbapi/web/assets/src/view/ProductView.js"></script>
             <script src="/bbapi/web/assets/src/view/ProductListView.js"></script>
-            <script src="/bbapi/web/assets/src/test.js"></script>
+            <script src="/bbapi/web/assets/src/view/ControlsView.js"></script>
+            <script src="/bbapi/web/assets/src/main.js"></script>
         {% endblock %}
     </body>
 </html>

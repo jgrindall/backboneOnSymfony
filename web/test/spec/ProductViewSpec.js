@@ -40,7 +40,9 @@ describe("ProductListView", function() {
             options.success();
         });
         listItem.$("#expand").trigger("click");
-        expect(model.fetch).toHaveBeenCalled();
+        if(!model.isNew()){
+            expect(model.fetch).toHaveBeenCalled();
+        }
         expect(listItem.el.innerHTML).toContain(d);
     });
 

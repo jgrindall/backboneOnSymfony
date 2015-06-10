@@ -2,3 +2,11 @@
     font-family:Verdana;
     margin:6px;
 }
+
+ul#controls{
+	list-style-type: none;
+}
+
+ul#controls li{
+	display:inline-block;
+}

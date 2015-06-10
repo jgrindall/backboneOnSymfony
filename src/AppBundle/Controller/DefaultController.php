@@ -1,5 +1,7 @@
 <?php
 
+/* http://symfony.com/doc/current/book/doctrine.html */
+
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

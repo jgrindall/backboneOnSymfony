@@ -1,61 +1,80 @@
-var ProductView = Backbone.View.extend({
-	"tagName": "li",
-});
+(function(ns){
 
-ProductView.prototype.initialize = function(options){
-	this.model = options.model;
-	this.model.on("change", this.onChange.bind(this));
-	this.render();
-};
+	"use strict";
 
-ProductView.prototype.onChange = function(e){
-	this.render();
-};
+	ns.ProductView = Backbone.View.extend({
+		"tagName": "li",
+		"confirmMessage":""
+	});
 
-ProductView.prototype.events = function(e){
-	var obj = {
-		"click button#delete": "onClickDelete",
-		"click button#expand": "onClickExpand"
+	ns.ProductView.prototype.initialize = function(options){
+		if(options && options.model){
+			this.setModel(options.model);
+		}
 	};
-	return obj;
-};
 
-ProductView.prototype.onClickDelete = function(){
-	var ok = confirm("Are you sure?");
-	if(ok){
-		this.model.destroy();
-	}
-};
+	ns.ProductView.prototype.setModel = function(model){
+		if(this.model){
+			throw new Error("I already have a model");
+		}
+		this.model = model;
+		this.model.on("change", this.onChange.bind(this));
+		this.render();
+	};
 
-ProductView.prototype.showDescription = function(){
-	var s = "<span class='details'>" + this.model.get("description") + "...</span>";
-	this.$(".details").remove();
-	this.$el.append(s);
-};
+	ns.ProductView.prototype.onChange = function(e){
+		this.render();
+	};
 
-ProductView.prototype.onClickExpand = function(){
-	var s, options, that = this;
-	this.showDescription();
-	if(!this.model.isNew()){
-		options = {
-			"success":function(){
-				that.showDescription();
-			},
-			"error":function(e){
-				console.log("error ", e);
-			}
+	ns.ProductView.prototype.events = function(e){
+		var obj = {
+			"click button#delete": "onClickDelete",
+			"click button#expand": "onClickExpand"
 		};
-		this.model.fetch(options);
-	}
-};
+		return obj;
+	};
 
-ProductView.prototype.render = function(e){
-	var name, s;
-	name = this.model.get("name");
-	s = name;
-	s += "<button id='expand'>Expand</button>";
-	s += "<button id='delete'>Delete</button>";
-	this.$el.html(s);
-	return this;
-};
+	ns.ProductView.prototype.onClickDelete = function(){
+		console.log("onClickDelete");
+		var ok = window.confirm(this.confirmMessage);
+		if(ok){
+			this.model.destroy();
+		}
+	};
+
+	ns.ProductView.prototype.showDescription = function(){
+		var s;
+		this.$(".details").remove();
+		s = "<span class='details'>" + this.model.get("description") + "...</span>";
+		this.$el.append(s);
+	};
+
+	ns.ProductView.prototype.onClickExpand = function(){
+		var s, options, that = this;
+		this.showDescription();
+		if(!this.model.isNew()){
+			options = {};
+			options.success = function(){
+				that.showDescription();
+			};
+			options.error = function(e){
+				console.log("error ", e);
+			};
+			this.model.fetch(options);
+		}
+	};
+
+	ns.ProductView.prototype.render = function(e){
+		var name, s;
+		name = this.model.get("name");
+		s = name;
+		s += "<button id='expand'>Expand</button>";
+		s += "<button id='delete'>Delete</button>";
+		this.$el.html(s);
+		return this;
+	};
+
+})(BBDemo);
+
+
 

@@ -6,26 +6,31 @@ index:
     resource: "@AppBundle/Controller/DefaultController.php"
     type:     annotation
 
+# returns json array
 list_products:
     path:     /products/
     defaults: { _controller: AppBundle\Controller\DefaultController::showModelsAction }
     methods:  [GET]
 
-list_product:
-    path:     /products/{id}
-    defaults: { _controller: AppBundle\Controller\DefaultController::showModelAction }
-    methods:  [GET]
-
+# returns id
 add_products:
     path:     /products/
     defaults: { _controller: AppBundle\Controller\DefaultController::addModelAction }
     methods:  [POST]
 
+# returns product
+list_product:
+    path:     /products/{id}
+    defaults: { _controller: AppBundle\Controller\DefaultController::showModelAction }
+    methods:  [GET]
+
+# returns id
 update_products:
     path:     /products/{id}
     defaults: { _controller: AppBundle\Controller\DefaultController::updateModelAction }
     methods:  [PUT]
 
+# returns id
 remove_products:
     path:     /products/{id}
     defaults: { _controller: AppBundle\Controller\DefaultController::removeModelAction }
