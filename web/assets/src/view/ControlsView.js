@@ -5,7 +5,8 @@
 	ns.ControlsView = Backbone.View.extend({
 		"tagName": "ul",
 		"id":"controls",
-		"confirmMessage":""
+		"confirmMessage":"",
+		"nameUtils":""
 	});
 
 	ns.ControlsView.prototype.initialize = function(){
@@ -25,8 +26,8 @@
 	ns.ControlsView.prototype.onClickAdd = function(e){
 		e.stopPropagation();
 		var toAdd = [];
-		toAdd.push({"name":"John"+Math.round(Math.random()*1000000), "age":Math.round(Math.random()*1000000), "description":"Fabulous"});
-		toAdd.push({"name":"John"+Math.round(Math.random()*1000000), "age":Math.round(Math.random()*1000000), "description":"Fabulous"});
+		toAdd.push({"name":this.nameUtils.getName(), "age":Math.round(Math.random()*1000), "description":"Fabulous"});
+		toAdd.push({"name":this.nameUtils.getName(), "age":Math.round(Math.random()*1000), "description":"Fabulous"});
 		system.notify("ControlsView::add", toAdd);
 	};
 
@@ -56,10 +57,10 @@
 
 	ns.ControlsView.prototype.render = function(e){
 		var s ="";
-		s += "<li><button id='addbutton'>Add</button></li>";
-		s += "<li><button id='savebutton'>Save</button></li>";
-		s += "<li><button id='editbutton'>Edit</button></li>";
-		s += "<li><button id='deletebutton'>Delete</button></li>";
+		s += "<li><button class='btn btn-primary' id='addbutton'>Add</button></li>";
+		s += "<li><button class='btn btn-success' id='savebutton'>Save</button></li>";
+		s += "<li><button class='btn btn-info' id='editbutton'>Edit</button></li>";
+		s += "<li><button class='btn btn-danger' id='deletebutton'>Delete</button></li>";
 		this.$el.html(s);
 		return this;
 	};

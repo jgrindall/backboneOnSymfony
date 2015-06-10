@@ -5,7 +5,8 @@
 
 	ns.ProductList = Backbone.Collection.extend({
 		"model":ns.Product,
-		"url":  "app_dev.php/products/"
+		"url":  "app_dev.php/products/",
+		"nameUtils":""
 	});
 
 	ns.ProductList.prototype.init = function(){
@@ -29,8 +30,9 @@
 	};
 
 	ns.ProductList.prototype.editAll = function(options){
+		var nameUtils = this.nameUtils;
 		this.each(function(model) {
-	    	model.set({"name":"Edward"+Math.round(Math.random()*1000000)});
+	    	model.set({"name":nameUtils.getName()});
 		});
 	};
 

@@ -68,8 +68,8 @@
 		var name, s;
 		name = this.model.get("name");
 		s = name;
-		s += "<button id='expand'>Expand</button>";
-		s += "<button id='delete'>Delete</button>";
+		s += "<button class='btn btn-info' id='expand'>Expand</button>";
+		s += "<button class='btn btn-danger' id='delete'>Delete</button>";
 		this.$el.html(s);
 		return this;
 	};

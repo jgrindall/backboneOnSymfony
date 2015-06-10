@@ -8,6 +8,7 @@
 	system.mapOutlet("system");
 	system.autoMapOutlets = true;
 	system.mapValue("confirmMessage", 			"Delete - are you sure?");
+	system.mapValue("nameUtils", 				ns.Utils);
 	system.mapClass('productListView', 			ns.ProductListView);
 	system.mapClass('controlsView', 			ns.ControlsView);
 	system.mapClass('productView', 				ns.ProductView);

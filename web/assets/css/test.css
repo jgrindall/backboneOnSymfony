@@ -10,3 +10,7 @@ ul#controls{
 ul#controls li{
 	display:inline-block;
 }
+
+button, .btn, .btn-primary, .btn-success, .btn-warning, .btn-danger{
+	margin: 10px !important;
+}
